@@ -1,0 +1,47 @@
+.discover {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    background-color: white;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+
+.text {
+    padding-left: 1rem;
+}
+
+.age_text {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+}
+
+.location_text {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+}
+
+.age_slide {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+.looking_for {
+    display: flex;
+    padding-left: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 2rem;
+}
+
+.location_slide {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+.slider {
+    width: 70%
+}
