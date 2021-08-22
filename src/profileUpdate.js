@@ -3,14 +3,30 @@ import { database } from './firebase';
 import {useStateValue} from "./StateProvider";
 import "./profile.css";
 import Button from '@material-ui/core/Button';
-import Discover from './profileDis';
-
+import DiscoverUp from './profileDisUp';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 function Update() {
     const [{user}, dispatch] = useStateValue();
     const [userData, setUserData] = useState('');
     const [state, setState] = useState([]);
+    const [gender, setGender] = useState('');
+    const [sex, setSex] = useState('');
+    const [text, setText] = useState('');
 
+    const handleChangeGen = (event) => {
+        setGender(event.target.value);
+    }
+
+    const handleText = (event) => {
+        setText(event.target.value)
+    }
+
+    const handleChangeSex = (event) => {
+        setSex(event.target.value);
+    }
 
     const getUser = () => {
     const currentUser = database
@@ -42,12 +58,23 @@ function Update() {
         getData();
     }, []);
 
+    useEffect(() => {
+        setGender(userData.gender)
+    }, [userData]);
+
+    useEffect(() => {
+        setSex(userData.sex)
+    }, [userData]);
 
     const updateProfile = () => {
         database.collection('people').doc(user.uid).update({
             fname: userData.fname,
             lname: userData.lname,
-            phoneNumber: userData.phoneNumber
+            phoneNumber: userData.phoneNumber,
+            age: userData.age, 
+            gender: gender,
+            sex: sex,
+            text: text
         });
     }
 
@@ -106,9 +133,54 @@ function Update() {
             </div>
 
             <div className="box_container">
+                <p>Age</p>
+                    <input className="input_box" type="text" value={userData ? userData.age : ''} 
+                        onChange={(e) => setUserData({...userData, age: e.target.value})} />
+            </div>
+
+            <div className="box_container_gender">
                 <p>Gender</p>
-                    <input className="input_box" type="text" value={userData ? userData.gender : ''} 
-                        onChange={(e) => setUserData({...userData, gender: e.target.value})} />
+                <div className="gender_box1">
+                    <Select
+                        value={gender}
+                        onChange={handleChangeGen}
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}>        
+
+                        <MenuItem value={'Men'}>Men</MenuItem>
+                        <MenuItem value={'Woman'}>Woman</MenuItem>
+                    </Select>
+                </div>
+            </div>
+
+            <div className="box_container_gender">
+                <p>Sexual Orientation</p>
+                <div className="gender_box2">
+                    <Select
+                        value={sex}
+                        onChange={handleChangeSex}
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}>        
+
+                        <MenuItem value={'Straight'}>Straight</MenuItem>
+                        <MenuItem value={'Gay'}>Gay</MenuItem>
+                        <MenuItem value={'Lesbian'}>Lesbian</MenuItem>
+                        <MenuItem value={'Bisexual'}>Bisexual</MenuItem>
+                        <MenuItem value={'Asexual'}>Asexual</MenuItem>
+                        <MenuItem value={'Demisexual'}>Demisexual</MenuItem>
+                        <MenuItem value={'Pansexaul'}>Pansexaul</MenuItem>
+                        <MenuItem value={'Queer'}>Queer</MenuItem>
+                        <MenuItem value={'Questioning'}>Questioning</MenuItem>
+                    </Select>
+                </div>
+            </div>
+
+            <div className="header_1">
+                <p>About you</p>
+            </div>
+
+            <div className="text_container">
+                <TextField multiline value={text} onChange={handleText} className="text" id="outlined-basic" label="Introducing yourself" variant="outlined" />
             </div>
 
             <div className="button_change">
@@ -133,7 +205,7 @@ function Update() {
                 <p>Discovery Settings</p>
             </div>
 
-            <Discover />
+            <DiscoverUp />
     </div>
 
   ) : (

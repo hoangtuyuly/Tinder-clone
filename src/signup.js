@@ -32,7 +32,14 @@ function SignUp() {
                     fname: '',
                     lname: '',
                     phoneNumber: '',
-                    url: ''
+                    url: '',
+                    gender: '',
+                    sex: '',
+                    age: '',
+                    location: '',
+                    genderLook: '',
+                    agePre: [18, 55],
+                    locationPre: [2, 165]
             });
                 history.push("/signin");
                 await cred.user.updateProfile({
@@ -42,6 +49,12 @@ function SignUp() {
                     {"name": "DIY",
                     "select": false}
                 );
+
+                await database.collection('people').doc(cred.user.uid).collection('passion').add(
+                    {"name": "auto",
+                    "ismatch": false}
+                );
+
                 array.forEach((doc) => {
                     const docRef = database.collection('people').doc(cred.user.uid).collection('passion').doc();
                     batch.set(docRef, doc)});

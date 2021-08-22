@@ -20,6 +20,7 @@
     justify-content:space-around;
     display: flex;
     align-items: center;
+    filter: drop-shadow(0px 6px 9px #af9d96);
 }
 
 .profile_left {
@@ -29,11 +30,20 @@
     justify-content: center;
     overflow: scroll;
     scroll-padding-left: 0;
+    direction: rtl;
+}
+
+.profile_reverse {
+    direction:ltr;
 }
 
 .profile_right {
     width: 75%;
+    height: 90%;
+    position: relative;
+    top: 7vh;
     align-items: center;
+    justify-content: center;
     display: flex;
     flex-direction: column;
 }
@@ -42,29 +52,63 @@
     top: 2vh;
     position: relative;
     display: flex;
+    flex-direction: column;
     height: 65vh;
     width: 20rem;
     background-color: white;
     position: relative;
     border-radius: 2%;
+    filter: drop-shadow(0 0 0.75rem rgb(160, 159, 159));
 }
 
-.header_icon {
-    padding: 30px;
+.icon_image:hover {
+    color: #DD2476 !important
 }
 
 .img{
     width: 20rem!important;
-    height: 25rem !important;
+    height: 22rem !important;
     border-top-left-radius: 2% !important;
     border-top-right-radius: 2% !important;
     border-bottom-right-radius: 0% !important;
     border-bottom-left-radius: 0% !important;
 }
 
+.card_name {
+    display: flex;
+    position: relative;
+    left: 2rem;
+    font-size: 1.8rem !important;
+}
+
+.card_name2 {
+    display: flex;
+    position: relative;
+    left: 2rem;
+    padding-top: 0.5rem;
+    align-items: center;
+}
+
+
+.icon_card {
+    color: rgb(85, 84, 84);
+}
+
+.card_text{
+    font-weight: 700 !important;
+}
+
+.card_age {
+    position: relative;
+    left: 1rem;
+}
+
+
 .buttons {
     display: flex;
-    justify-content: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
 }
 
 .header_1 {
@@ -84,7 +128,8 @@
 }
 
 .button_logout:hover {
-    background-color: #DD2476 !important;
+    background-color: #f87d36 !important;
+    filter: drop-shadow(0 0 0.75rem rgb(139, 105, 113));
     color: white;
 }
 
@@ -98,15 +143,39 @@
     border-top: 1px solid lightgrey;
     box-sizing: border-box;
     padding-left: 1rem;
-    padding-right: 1rem;
+    padding-right: 0.5rem;
     justify-content: space-between;
+    align-items: center;
+}
+
+.box_container_gender {
+    display: flex;
+    font-size: 1rem;
+    line-height: 2.8rem;
+    color: black;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid lightgrey;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    align-items: center;
+}
+
+.gender_box1 {
+    position: relative;
+    left: 8.9rem
+}
+
+.gender_box2 {
+    position: relative;
+    left: 4rem
 }
 
 .input_box {
     font-size: 1rem;
     line-height: 2.6rem;
     color: black;
-    width: 10rem;
+    width: 9rem;
     border: none;
     box-sizing: border-box;
 }
@@ -115,6 +184,7 @@
 .button_edit {
     background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
     color: white !important;
+    filter: drop-shadow(0 0 0.75rem #c7a49d);
 }
 
 .button_change {
@@ -161,8 +231,45 @@
     padding-bottom: 3rem;
 }
 
+.button_Change2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    position: relative;
+    bottom: 1rem;
+}
+
 .passion_button_info {
     background-color: #fa6b4f !important;
     color: white !important;
     margin: 7px 3px !important;
+}
+
+.text_container {
+    width: 100%;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+
+.text {
+    width: 100%;
+    max-height: none;
+    background-color: white;
+}
+
+.text_container_info {
+    min-width: 100%;
+    background-color: white;
+    padding: 0.8rem;
+}
+
+.text_info {
+    width: 100%;
+    min-height: 2rem;
+    background-color: white;
+    display: table-cell;
+    vertical-align: middle
 }

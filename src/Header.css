@@ -17,3 +17,7 @@
     object-fit: contain;
     background-color: white;
 }
+
+.header_icon {
+    padding: 30px;
+}

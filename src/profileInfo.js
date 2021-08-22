@@ -4,7 +4,7 @@ import {useStateValue} from "./StateProvider";
 import { database, auth } from './firebase';
 import "./profile.css";
 import { useHistory } from "react-router-dom";
-import Discover from './profileDis';
+import Discover from "./profileDis"
 
 function Info() {
     const [userData, setUserData] = useState('');
@@ -46,7 +46,7 @@ function Info() {
         getUser()
     }, [userData]);
 
-  return (
+  return user?.displayName && (
 
     <div className="profile_info">
             <div className="header_1">
@@ -83,9 +83,27 @@ function Info() {
             </div>
 
             <div className="box_container">
+                <p>Age</p>
+                <p> {userData ? userData.age : ''} </p>
+            </div>
+
+            <div className="box_container">
                 <p>Gender</p>
                 <p> {userData ? userData.gender : ''} </p>
             </div>
+
+            <div className="box_container">
+                <p>Sexual Orientation</p>
+                <p> {userData ? userData.sex : ''} </p>
+            </div>
+
+            <div className="header_1">
+                <p>About you</p>
+            </div>
+            <div className="text_container_info">
+                <p className="text_info"> {userData ? userData.text : ''} </p>
+            </div>
+
 
             <div className="header_1">
                 <p>Passions</p>
@@ -106,7 +124,7 @@ function Info() {
             <div className="header_1">
                 <p>Discovery Settings</p>
             </div>
-            <Discover />
+        <Discover />
     </div>
   );
 }

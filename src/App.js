@@ -17,16 +17,11 @@ function App() {
         <Switch>
           <Route path="/chat">
             <Header backButton="/"/>
-            <h1>HI</h1>
             <Chat />
           </Route>
 
           <Route path="/signup">
             <SignUp />
-          </Route>
-
-          <Route path="/signin">
-            <SignIn />
           </Route>
 
           <Route path="/profile">
@@ -36,11 +31,16 @@ function App() {
           <Route path="/profile_update">
             <Update />
           </Route>
+          
+          <Route path="/signin">
+            <SignIn />
+          </Route>
 
           <Route path="/">
             <Header />
             <TinderCards />
             <ButtonSwipe />
+
           </Route>
         </Switch>
       </Router>

@@ -1,7 +1,5 @@
 .discover {
     width: 100%;
-    padding-top: 1rem;
-    padding-bottom: 2rem;
     background-color: white;
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
@@ -24,24 +22,74 @@
 }
 
 .age_slide {
-    margin-top: 1rem;
+    padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 2rem;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 1rem;
 }
 .looking_for {
     display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-left: 1rem;
     align-items: center;
     justify-content: space-between;
     padding-right: 2rem;
+    border-bottom: 1px solid lightgrey;
 }
 
 .location_slide {
-    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 2rem;
+    border-bottom: 1px solid lightgrey;
 }
 
 .slider {
-    width: 70%
+    width: 86%
+}
+
+.location_fill {
+    display: flex;
+    padding-right: 2rem;
+    border-bottom: 1px solid lightgrey;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-height: none;
+    justify-content: space-between;
+}
+
+
+.input_autofill {
+    line-height: 0.5rem !important;
+    width: 100%;
+}
+
+.autofill {
+    position: relative;
+}
+
+.autofill_info{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+.autocomplete-dropdown-container {
+    font-size: 1rem;
+    position: absolute;
+    top: auto;
+    border: 1px solid lightgrey;
+    z-index: 1;
+}
+
+.autofill_option {
+    padding: 0.4rem;
+}
+
+.autocomplete-dropdown-container:hover {
+    cursor: point;
 }

@@ -1,0 +1,21 @@
+.sideBar {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    align-items: center;
+}
+
+.sideBar:hover{
+    background-color: rgb(235, 239, 241);
+}
+.avatar {
+    width: 4rem !important;
+    height: 4rem !important;
+    filter: drop-shadow(0px 6px 9px #b1b1b1);
+}
+
+.name {
+    position: relative;
+    left: 3rem
+}
