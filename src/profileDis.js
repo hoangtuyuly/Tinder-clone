@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {useStateValue} from "./StateProvider";
 import { database } from './firebase';
 import './profileDis.css';
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 
 function Discover() {
-  const [{user}, dispatch] = useStateValue();
+  const user = useSelector(selectUser)
   const [userData, setUserData] = useState('');
   const [valueAge, setValueAge] = useState([]);
   const [valueLocation, setValueLocation] = useState([]);

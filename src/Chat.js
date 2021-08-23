@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import {useStateValue} from "./StateProvider";
 import "./Chat.css";
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { database } from './firebase';
 import SideBar from './SideBar';
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 function Chat() {
-  const [{user}, dispatch] = useStateValue();
+  const user = useSelector(selectUser)
   const [input, setInput] = useState('');
   const [matches, setMatches] = useState([]);
-  const [message, setMessage] = useState([]);
 
   
   useEffect(() => {

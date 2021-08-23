@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { database } from './firebase';
-import {useStateValue} from "./StateProvider";
 import "./profile.css";
 import Button from '@material-ui/core/Button';
 import DiscoverUp from './profileDisUp';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 function Update() {
-    const [{user}, dispatch] = useStateValue();
+    const user = useSelector(selectUser)
     const [userData, setUserData] = useState('');
     const [state, setState] = useState([]);
     const [gender, setGender] = useState('');

@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { auth } from "./firebase"
 import { useHistory, Link  } from "react-router-dom";
 import "./signup.css";
-import {actionTypes} from "./Reducer";
-import {useStateValue} from "./StateProvider";
+
 
 function SignIn() {
     let history = useHistory();
     const [emailAdress, setEmailAdress] = useState('');
     const [password, setPassword] = useState('');
     const isInvalid = emailAdress === '' || password === '';
-    const [state, dispatch] = useStateValue();
 
     const handlesignIn = async (event) => {
         event.preventDefault();
 
         try { 
-            await auth.signInWithEmailAndPassword(emailAdress, password)
-            .then((result) => {
-                dispatch({
-                    type: actionTypes.SET_USER,
-                    user: result.user,
-                });
-            });
-            history.push("/");
+            await auth.signInWithEmailAndPassword(emailAdress, password);
+            history.push("/main");
              
         } catch(error) {
             setEmailAdress('');
@@ -57,7 +49,7 @@ function SignIn() {
                     onChange={(e) => setPassword(e.target.value)} require/>
 
 
-                    <button className="button"
+                    <button className="button_log"
                     type="submit"
                     disabled={isInvalid}
                     onClick={handlesignIn}>Sign In</button>

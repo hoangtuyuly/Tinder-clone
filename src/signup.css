@@ -53,19 +53,28 @@
     padding-right: 1rem;
 }
 
-.button {
-    background-color: rgb(41, 130, 238);
+.button_log {
+    background-color: rgba(245, 7, 7, 0.7);
     color: white;
     width: 100%;
     border-radius: 0.25rem;
     height: 2rem;
     font-weight: 700;
     border: none;
+    filter: drop-shadow(0 0 0.5rem #cabdb4);
 }
 
-.button:disabled,
-button[disabled]{
-  background-color: rgba(41, 130, 238, 0.5);
+.button_log:active {
+  background-color: rgba(245, 7, 7, 0.7);
+  transform: translateY(4px);
+  filter: drop-shadow(0 0 0.5rem #cabdb4);
+}
+
+
+.button_log:disabled,
+button_log[disabled]{
+  background-color: rgba(240, 98, 98, 0.7);
+  filter: drop-shadow(0 0 0.5rem #cabdb4);
   color: white;
 }
 

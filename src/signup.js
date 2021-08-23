@@ -102,7 +102,7 @@ function SignUp() {
                     onChange={(e) => setPassword(e.target.value)} require/>
 
 
-                    <button className="button"
+                    <button className="button_log"
                     type="submit"
                     disabled={isInvalid}
                     onClick={handlesignUp}>Sign Up</button>

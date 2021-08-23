@@ -1,22 +1,22 @@
 import Slider from '@material-ui/core/Slider';
-import React, { useState, useEffect, useCallback } from "react";
-import {useStateValue} from "./StateProvider";
+import React, { useState, useEffect } from "react";
 import { database } from './firebase';
 import './profileDis.css';
 import { ThemeProvider } from "@material-ui/styles";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Input } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import PlacesAutocomplete, {
   geocodeByAddress,
 } from 'react-places-autocomplete';
 import TextField from '@material-ui/core/TextField';
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 
 function DiscoverUp() {
-  const [{user}, dispatch] = useStateValue();
+  const user = useSelector(selectUser)
   const [userData, setUserData] = useState('');
   const [valueAge, setValueAge] = useState([18, 55]);
   const [valueLocation, setValueLocation] = useState([2, 165]);

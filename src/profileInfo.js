@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Button from '@material-ui/core/Button';
-import {useStateValue} from "./StateProvider";
 import { database, auth } from './firebase';
 import "./profile.css";
 import { useHistory } from "react-router-dom";
 import Discover from "./profileDis"
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 function Info() {
+    const user = useSelector(selectUser)
     const [userData, setUserData] = useState('');
-    const [{user}, dispatch] = useStateValue();
     const [state, setState] = useState([]);
     let  history = useHistory();
 

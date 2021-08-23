@@ -1,28 +1,13 @@
 import { useState, useEffect } from "react";
 import TinderCard from 'react-tinder-card';
 import {database} from './firebase';
-import {useStateValue} from "./StateProvider";
 import './TinderCard.css';
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 function TinderCards() {
-    const [{user}, dispatch] = useStateValue();
+    const user = useSelector(selectUser)
     const [people, setPeople] = useState([]);
-    const [userData, setUserData] = useState();
-    const [id, setId] = useState();
-
-    const getUser = () => {
-    const currentUser = database
-            .collection('people')
-            .doc(user.uid)
-            .get()
-            .then((document) => {
-                setUserData(document.data())
-            })
-    }
-
-    useEffect(() => {
-        getUser();
-    }, []);
 
     const swiped = async (direction, name, id, url) => {
         if (direction == 'right') {
@@ -40,7 +25,7 @@ function TinderCards() {
                 .collection('people')
                 .doc(id)
                 .collection('matches')
-                .where('name', '==', userData.userName)
+                .where('name', '==', user.displayName)
                 .get()
 
             const find = await result.docs.map((user) => user.data().length > 0);
@@ -79,11 +64,12 @@ function TinderCards() {
 
 
 
-    return user?.displayName ?(
+    return (
         <div> 
             <div className="tindeCard_container">
                 {people.map((person) => {
-                return  person.userName !== userData.userName ?
+                return person?.userName? (
+                person.userName !== user.displayName ?
                     <TinderCard
                         className = "swipe"
                         key={person.userName}
@@ -97,10 +83,12 @@ function TinderCards() {
                             <h3>{person.userName}</h3>
                         </div> : ''}
                     </TinderCard>
-                : '' })})
+                : '' )
+                    : ''}
+                )}
             </div>
         </div>
-    ): '';
+    )
   }
   
   export default TinderCards;

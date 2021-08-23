@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import IconButton from '@material-ui/core/IconButton';
-import {useStateValue} from "./StateProvider";
 import { Avatar } from '@material-ui/core';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { storage, database, auth } from './firebase';
@@ -10,9 +9,11 @@ import Update from './profileUpdate';
 import Button from '@material-ui/core/Button';
 import Header from './Header';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
+import {useSelector} from "react-redux";
+import {selectUser} from './features/userReducer';
 
 function Profile() {
-    const [{user}, dispatch] = useStateValue();
+    const user = useSelector(selectUser)
     const [image, setImage] = useState(null);
     const [userData, setUserData] = useState('');
     const [update, setUpdate] = useState(false)
