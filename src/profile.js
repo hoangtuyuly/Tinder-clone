@@ -55,7 +55,7 @@ function Profile() {
     const handleUpload = async () => {
         const imgUrl = await uploadPhoto();
         if (imgUrl == null) {
-            console.log('not working')
+            alert('Please chose different file')
         } else {
         database.collection('people').doc(user.uid).update({
             url: imgUrl,

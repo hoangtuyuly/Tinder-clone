@@ -8,6 +8,22 @@ import {selectUser} from './features/userReducer';
 function TinderCards() {
     const user = useSelector(selectUser)
     const [people, setPeople] = useState([]);
+    const [userData, setUserData] = useState('');
+
+    const getUser = async() => {
+    const currentUser = database
+            .collection('people')
+            .doc(user.uid)
+            .get()
+            .then((document) => {
+                setUserData(document.data());
+            })
+    }
+  
+    useEffect(() => {
+        getUser();
+        }, []);
+
 
     const swiped = async (direction, name, id, url) => {
         if (direction == 'right') {
@@ -18,9 +34,9 @@ function TinderCards() {
             .doc(id)
             .set({
                 name: name,
-                url: url,
-                ismatch: false
+                url: url
         });
+            await (userData)
             const result = await database
                 .collection('people')
                 .doc(id)
@@ -31,26 +47,15 @@ function TinderCards() {
             const find = await result.docs.map((user) => user.data().length > 0);
             if (find.length) {
                 database
-                    .collection('people')
-                    .doc(user.uid)
-                    .collection('matches')
-                    .doc(id)
-                    .update({
-                        ismatch: true
-                    });
-                database
-                    .collection('people')
-                    .doc(id)
-                    .collection('matches')
-                    .doc(user.uid)
-                    .update({
-                        ismatch: true
-                    })
-            }
-        }}
+                    .collection('chats')
+                    .add({
+                    user: [{id: user.uid, name: user.displayName, url: userData.url},
+                        {id: id, name: name, url: url}]
+                });
+            }}
+        }
 
     useEffect(() => {
-
         database
             .collection("people")
             .onSnapshot((snapshot) => {

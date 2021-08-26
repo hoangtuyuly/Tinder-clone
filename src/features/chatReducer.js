@@ -1,22 +1,18 @@
-export const initialState = {
-    user: null,
-};
+import {createSlice} from '@reduxjs/toolkit'
 
-export const actionTypes = {
-    SET_USER: "SET_USER",
-}
+const chatSlice = createSlice({
+    name: "chat",
+    initialState: {
+        chatId: null
+    },
+    reducers: {
+        setChat: (state, action) => {
+            state.chatId = action.payload.chatId
+        },
+    },
+});
 
-const reducer = (state, action) => {
-    console.log(action);
-    switch (action.type) {
-        case actionTypes.SET_USER:
-            return {
-                ...state,
-                user: action.user,
-            };
-        default:
-            return state;
-    }
-};
+export const {setChat} = chatSlice.actions;
+export const selectChatId = (state) => state.chat.chatId
 
-export default reducer;
+export default chatSlice;
